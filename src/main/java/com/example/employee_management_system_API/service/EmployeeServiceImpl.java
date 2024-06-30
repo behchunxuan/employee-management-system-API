@@ -71,6 +71,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     public List<EmployeeDto> getAllEmployees() {
         // Retrieve all employees
         return employeeRepository.findAll().stream()
@@ -79,6 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     @Cacheable(key = "#id")
     public EmployeeDto getEmployeeById(Long id) {
         // Find the employee by ID
@@ -92,6 +94,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     @CachePut(key = "#id")
     public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
         // Find the employee by ID
@@ -120,6 +123,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     @CacheEvict(key = "#id")
     public void deleteEmployee(Long id) {
         // Delete the employee by ID
@@ -127,6 +131,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     @Cacheable
     public List<EmployeeDto> getEmployeesByPosition(String position) {
         // Find employees by position
@@ -141,6 +146,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     @Cacheable
     public List<EmployeeDto> getEmployeesByDepartment(Long departmentId) {
         // Find employees by department ID
@@ -155,6 +161,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     @CachePut(key = "#employeeId")
     public EmployeeDto assignProjectToEmployee(Long employeeId, Long projectId) {
         // Find the employee by ID
@@ -174,8 +181,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @CachePut(key = "#employeeId")
     @Transactional
+    @CachePut(key = "#employeeId")
     public EmployeeDto removeProjectFromEmployee(Long projectId, Long employeeId) {
         // Find employee by ID
         Employee employee = employeeRepository.findById(employeeId)
