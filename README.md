@@ -11,7 +11,7 @@ Prerequisites
 
 Installation:
     1. Clone the repository
-    git clone https://github.com/XXXX/employee-management-system.git
+    git clone https://github.com/behchunxuan/employee-management-system-API.git
     cd employee-management-system
 
     2. Configure the MySQL database:
