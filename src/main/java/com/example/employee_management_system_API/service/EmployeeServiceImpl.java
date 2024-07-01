@@ -19,10 +19,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -162,7 +160,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    @CachePut(key = "#employeeId")
+    @CachePut(key = "#id")
     public EmployeeDto assignProjectToEmployee(Long employeeId, Long projectId) {
         // Find the employee by ID
         Employee employee = employeeRepository.findById(employeeId)
@@ -182,7 +180,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    @CachePut(key = "#employeeId")
+    @CachePut(key = "#id")
     public EmployeeDto removeProjectFromEmployee(Long projectId, Long employeeId) {
         // Find employee by ID
         Employee employee = employeeRepository.findById(employeeId)
@@ -205,7 +203,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @CachePut(key = "#employeeId")
+    @CachePut(key = "#id")
     @Transactional
     public EmployeeDto assignDepartmentToEmployee(Long employeeId, Long departmentId) {
         // Find the employee by ID
@@ -223,7 +221,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @CachePut(key = "#employeeId")
+    @CachePut(key = "#id")
     @Transactional
     public EmployeeDto removeEmployeeFromDepartment(Long employeeId) {
         // Find the employee by ID
